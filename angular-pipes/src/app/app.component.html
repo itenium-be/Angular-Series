@@ -1,20 +1,173 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div class="container container-fluid">
+<div class="row">
 
+
+
+<div app-panel header="JsonPipe" [impure]="true" class="col-sm-6">
+  Quick object dump with the impure JsonPipe.
+  <br>
+  Impure: Changes to the object will automatically update, not just reference changes.
+
+  <code>{{ {number: 7} | json }}</code>
+</div>
+
+
+
+<div app-panel header="String pipes" class="col-sm-6">
+  {{ 'LOWERCASE' | lowercase }}
+
+  {{ 'uppercase' | uppercase }}
+
+  {{ 'tHIs is tiTLE CaSe' | titlecase }}
+</div>
+
+
+
+
+
+<div app-panel header="DatePipe" class="col-sm-6">
+  <!-- value_expression | date [ : format [ : timezone [ : locale ] ] ] -->
+
+  <p>Works on a Date, a number (ms since UTC epoch), or an <a href="https://www.w3.org/TR/NOTE-datetime">ISO string</a></p>
+
+  <h4>Examples</h4>
+
+  Default: mediumdate format, local system timezone and undefined locale.
+  <br>
+  Only en-US locale comes shipped with Angular.
+  <!-- Check app.module.ts for loading other locales -->
+  <!-- 'fr' locale is loaded there -->
+  <br>
+  {{ Date.parse('2019-05-01') | date }} = 1 mai 2019
+
+  <br>
+
+  {{ Date.parse('2019-05-01T23:55:00') | date:'yyyy-MM-dd HH:mm:ss' }} = 2019-05-01 23:55:00
+  <br>
+
+  <h4>More options</h4>
+  <li>Week of year: w=7, ww=07</li>
+  <li>Week day: E=Tue, EEEE=Tuesday, EEEEE=T, EEEEEE=Tu</li>
+  <li>Month standalone: LLLL=September</li>
+  <li>Period: a=am/pm</li>
+  <li>Hour 1-12: h=1, hh=01</li>
+  <li>Zone: z=GMT-8, Z=-0800</li>
+
+  Or named: short, medium, long, full; shortDate, mediumTime, ...
+
+  <h4>Timezone and locale</h4>
+
+  {{ Date.parse('2019-05-01T23:55:00') | date:'yyyy-MM-dd HH:mm:ss':'-0055':'fr' }} = 2019-05-01 21:00:00
+</div>
+
+
+
+
+
+
+<div app-panel header="Numeric pipes" class="col-sm-6">
+  <h2>CurrencyPipe</h2>
+
+  <!-- value_expression | currency [ : currencyCode [ : display [ : digitsInfo [ : locale ] ] ] ] }} -->
+
+  Displays $ as currency sign by default for currencyCode.
+  <br>
+  {{ 1500.953 | currency:'EUR':'symbol' }} = 1 500,95 €
+
+
+
+  <li>currencyCode: USD, EUR, GBP, ...</li>
+  <!-- All currencyCodes: https://en.wikipedia.org/wiki/ISO_4217#Active_codes -->
+  <li>display: code=USD, symbol=$, a string</li>
+  <li>digitsInfo: [minIntegerDigits=1].[minFractionDigits=2]-[maxFractionDigits=2] (ex: 3.2-2 -> 000.00)</li>
+  <li>locale: en-US</li>
+
+  <h4>Full example</h4>
+  {{ 3.955 | currency:'EUR':'symbol':'3.2-2':'fr' }} = 003,96
+
+
+  <br>
+  <br>
+
+  <a href="https://github.com/angular/angular/issues/25461">Issue: Currency Pipe: Be able to set/change the default currency</a>
+
+
+  <br>
+
+
+  <h2>DecimalPipe</h2>
+  <!-- {{ value_expression | number [ : digitsInfo [ : locale ] ] }} -->
+  {{ 25.123 | number:'3.4-4'}} = 025,1230
+
+
+  <h2>PercentPipe</h2>
+  <!-- {{ value_expression | percent [ : digitsInfo [ : locale ] ] }} -->
+  {{ 0.259 | percent }} = 26%
+</div>
+
+
+
+
+<div app-panel header="Array pipes" class="col-sm-6">
+  <h2>KeyValuePipe <small>(Impure)</small></h2>
+
+  Works with Objects and Maps.
+
+  <div *ngFor="let item of object | keyvalue:compareFn">
+    {{item.key}} => {{item.value}}
+  </div>
+
+
+  <h2>SlicePipe <small>(Impure)</small></h2>
+
+  <!-- {{ value_expression | slice : start [ : end ] }} -->
+
+  {{ [0, 1, 2, 3, 4] | slice:0:2 | json }} = [ 0, 1 ]
+  <br>
+  {{ [0, 1, 2, 3, 4] | slice:-1 | json }} = [ 4 ]
+  <br>
+  {{ [0, 1, 2, 3, 4] | slice:-5:2 | json }} = [ 0, 1 ]
+  <br>
+  {{ [0, 1, 2, 3, 4] | slice:-5:-2 | json }} = [ 0, 1, 2 ]
+</div>
+
+
+
+
+
+
+<div app-panel header="AsyncPipe" [impure]="true" class="col-sm-6">
+
+  <!-- {{ obj_expression | async }} -->
+  <!-- with obj_expression being an Observable or a Promise -->
+
+  <div>Time: {{ time$ | async }}</div>
+
+
+  <div *ngIf="time$ | async as time; else loading">
+    {{ time }}
+  </div>
+  <ng-template #loading>
+    Waiting...
+  </ng-template>
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- <h1>I18nSelectPipe &amp; I18nPluralPipe</h1> -->
+
+<!-- https://angular.io/api/common/I18nSelectPipe -->
+<!-- {{ value_expression | i18nSelect : mapping }} -->
+
+<!-- https://angular.io/api/common/I18nPluralPipe -->
+<!-- {{ value_expression | i18nPlural : pluralMap [ : locale ] }} -->
+
+</div>
+</div>
