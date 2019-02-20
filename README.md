@@ -1,7 +1,6 @@
 # Angular Pipes
 
-[Link to the blog post](TODO:here)
-
+[Link to the blog post](https://itenium.be/blog/javascript/angular-pipes/)
 
 
 ## Run
