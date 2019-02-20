@@ -1,14 +1,23 @@
 <div class="container container-fluid">
+<h1>Builtin Pipes</h1>
 <div class="row">
+
+
 
 
 
 <div app-panel header="JsonPipe" [impure]="true" class="col-sm-6">
   Quick object dump with the impure JsonPipe.
   <br>
-  Impure: Changes to the object will automatically update, not just reference changes.
+  <b>Impure</b>: Angular executes an impure pipe during every component change detection cycle.
+  An impure pipe is called often, as often as every keystroke or mouse-move.
 
+  <p><p>
   <code>{{ {number: 7} | json }}</code>
+
+  <p>
+  from TypeScript:
+  <code>{{ jsonOutput }}</code>
 </div>
 
 
@@ -57,7 +66,7 @@
 
   <h4>Timezone and locale</h4>
 
-  {{ Date.parse('2019-05-01T23:55:00') | date:'yyyy-MM-dd HH:mm:ss':'-0055':'fr' }} = 2019-05-01 21:00:00
+  {{ Date.parse('2019-05-01T23:55:00') | date:"d MMMM yyyy, HH'h'mm":'-0055':'fr' }} = 1 mai 2019, 21h00
 </div>
 
 
@@ -83,7 +92,7 @@
   <li>locale: en-US</li>
 
   <h4>Full example</h4>
-  {{ 3.955 | currency:'EUR':'symbol':'3.2-2':'fr' }} = 003,96
+  {{ 3.955 | currency:'EUR':'code':'3.2-2':'fr' }} = 003,96 EUR
 
 
   <br>
@@ -168,6 +177,34 @@
 
 <!-- https://angular.io/api/common/I18nPluralPipe -->
 <!-- {{ value_expression | i18nPlural : pluralMap [ : locale ] }} -->
+
+</div>
+
+
+<h1>Custom Pipes</h1>
+<div class="row">
+
+
+  <div app-panel header="Nl2brPipe" class="col-sm-6">
+    <div [innerHTML]="'Line1\nLine2' | nl2br"></div>
+  </div>
+
+  <div app-panel header="TrimPipe" class="col-sm-6">
+    <div>BEGIN{{ '  trimMe  ' | trim:{left: false, right: true, char:' '} }}END</div>
+  </div>
+
+  <div app-panel header="BytesPipe" class="col-sm-6">
+    <div>{{ 5631024 | bytes:2 }}</div>
+  </div>
+
+
+  <div app-panel header="UCFirstPipe" class="col-sm-6">
+    <div>{{ 'my sentence' | ucfirst }}</div>
+  </div>
+
+  <div app-panel header="HoursPipe" class="col-sm-6">
+    <div>{{ Date.parse('2000-01-01T15:30:00') | hours:true:false }}</div>
+  </div>
 
 </div>
 </div>
