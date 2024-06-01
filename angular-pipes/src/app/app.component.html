@@ -41,11 +41,12 @@
 
   <h4>Examples</h4>
 
-  Default: mediumdate format, local system timezone and undefined locale.
+  Default: mediumDate format, local system timezone and en-US locale.
   <br>
-  Only en-US locale comes shipped with Angular.
-  <!-- Check app.module.ts for loading other locales -->
+  Only en-US locale comes shipped with Angular by default.
+  <!-- Check app.config.ts for loading other locales -->
   <!-- 'fr' locale is loaded there -->
+  <!-- Uncomment DEFAULT_CURRENCY_CODE & DATE_PIPE_DEFAULT_OPTIONS to see it in action! -->
   <br>
   {{ Date.parse('2019-05-01') | date }} = 1 mai 2019
 
