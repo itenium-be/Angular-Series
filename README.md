@@ -15,6 +15,7 @@ Node: v22.1.0
 Angular: v18
 
 ```sh
+cd angular-pipes
 npm install
 ng serve
 ```
