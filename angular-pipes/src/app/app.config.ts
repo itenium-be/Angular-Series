@@ -8,6 +8,10 @@ import localeFr from '@angular/common/locales/fr';
 registerLocaleData(localeFr, 'fr');
 
 
+// import localeNlBe from '@angular/common/locales/nl-BE';
+// registerLocaleData(localeNlBe, 'nl-BE');
+
+
 export const appConfig: ApplicationConfig = {
   providers: [
     {provide: LOCALE_ID, useValue: 'fr'},
