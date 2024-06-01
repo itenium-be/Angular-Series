@@ -1,4 +1,4 @@
-import { KeyValue, JsonPipe, CurrencyPipe, CommonModule } from '@angular/common';
+import { KeyValue, JsonPipe, CurrencyPipe, CommonModule, formatCurrency } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -39,7 +39,11 @@ export class AppComponent {
 
   jsonOutput: string;
   constructor(jp: JsonPipe, cp: CurrencyPipe) {
+    // JSON Formatting
     this.jsonOutput = jp.transform({key: 0});
-    console.log('CurrencyPipe from AppComponent ctor', cp.transform(450.657, 'EUR', 'symbol', '0.2-2', 'fr'));
+
+    // Currency Formatting:
+    console.log('DEPRECATED: CurrencyPipe from AppComponent ctor', cp.transform(450.657, 'EUR', 'symbol', '0.2-2', 'fr'));
+    console.log('Instead use formatCurrency fn!', formatCurrency(450.657, 'fr', 'EUR', 'symbol', '0.2-2'));
   }
 }

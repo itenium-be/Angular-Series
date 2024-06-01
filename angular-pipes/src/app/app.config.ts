@@ -15,6 +15,6 @@ export const appConfig: ApplicationConfig = {
     // Provide explicitly because we are injecting
     // these pipes in the app.component constructor
     JsonPipe,
-    CurrencyPipe,
+    CurrencyPipe, // ATTN: Use the formatCurrency fn directly instead!
   ]
 };
