@@ -1,7 +1,7 @@
 import { KeyValue, JsonPipe, CurrencyPipe, CommonModule, formatCurrency } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Observable } from 'rxjs';
+import { interval, map } from 'rxjs';
 import { PanelComponent } from './panel/panel.component';
 import { BytesPipe } from './pipes/bytes.pipe';
 import { HoursPipe } from './pipes/hours.pipe';
@@ -33,9 +33,9 @@ export class AppComponent {
 
 
   // {{ time$ | async }}
-  time$ = new Observable<string>(observer => {
-    setInterval(() => observer.next(new Date().toString()), 1000);
-  });
+  time$ = interval(1000).pipe(
+    map(() => new Date().toString())
+  )
 
   jsonOutput: string;
   constructor(jp: JsonPipe, cp: CurrencyPipe) {
