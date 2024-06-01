@@ -1,14 +1,22 @@
-import { Component } from '@angular/core';
-import { KeyValue } from '@angular/common';
-import { Observable } from 'rxjs/internal/Observable';
-
-import { JsonPipe, CurrencyPipe } from '@angular/common';
+import { KeyValue, JsonPipe, CurrencyPipe, CommonModule } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { Observable } from 'rxjs';
+import { PanelComponent } from './panel/panel.component';
+import { BytesPipe } from './pipes/bytes.pipe';
+import { HoursPipe } from './pipes/hours.pipe';
+import { Nl2brPipe } from './pipes/nl2br.pipe';
+import { TrimPipe } from './pipes/trim.pipe';
+import { UcFirstPipe } from './pipes/ucfirst.pipe';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  providers: [JsonPipe, CurrencyPipe],
+  standalone: true,
+  imports: [
+    RouterOutlet, PanelComponent, CommonModule,
+    BytesPipe, HoursPipe, Nl2brPipe, TrimPipe, UcFirstPipe,
+  ],
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
   Date = Date;
@@ -29,9 +37,8 @@ export class AppComponent {
     setInterval(() => observer.next(new Date().toString()), 1000);
   });
 
-  jsonOutput: string;
-  constructor(private jp: JsonPipe, private cp: CurrencyPipe) {
-    this.jsonOutput = this.jp.transform({key: 0});
-    console.log('CurrencyPipe from AppComponent ctor', cp.transform(450.657, 'EUR', 'symbol', '0.2-2', 'fr'));
+  jsonOutput: string = '';
+  constructor() {
+
   }
 }

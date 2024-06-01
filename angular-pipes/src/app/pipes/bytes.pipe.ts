@@ -10,7 +10,7 @@ import { Pipe, PipeTransform } from '@angular/core';
  * More versatile implementation:
  * https://github.com/fknop/angular-pipes/blob/master/src/math/bytes.pipe.ts
  */
-@Pipe({ name: 'bytes' })
+@Pipe({ name: 'bytes', standalone: true })
 export class BytesPipe implements PipeTransform {
   private dict: Array<{max: number; type: string}> = [
     { max: 1024, type: 'B' },

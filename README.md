@@ -11,6 +11,8 @@ Some live experimentation?
 - `app.component.ts`: Injecting a pipe + setting up helpers for `AsyncPipe`, `DatePipe` and `KeyValuePipe`.
 - `app.module.ts`: Loading/Setting locale + declarations for pipes used in `app.component.html`.
 
+Node: v22.1.0
+
 ```
 ng serve
 ```
