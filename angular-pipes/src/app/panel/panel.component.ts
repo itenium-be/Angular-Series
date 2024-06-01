@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
   template: `
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">{{ header }} <small *ngIf="impure">(Impure)</small></h5>
+        <h1 class="card-title">{{ header }} <small *ngIf="impure">(Impure)</small></h1>
         <p class="card-text">
           <ng-content />
         </p>

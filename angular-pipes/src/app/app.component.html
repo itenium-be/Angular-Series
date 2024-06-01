@@ -25,8 +25,10 @@
 <div app-panel header="String pipes" class="col-sm-6">
   {{ 'LOWERCASE' | lowercase }}
 
+  <br>
   {{ 'uppercase' | uppercase }}
 
+  <br>
   {{ 'tHIs is tiTLE CaSe' | titlecase }}
 </div>
 
@@ -54,6 +56,7 @@
 
   {{ Date.parse('2019-05-01T23:55:00') | date:'yyyy-MM-dd HH:mm:ss' }} = 2019-05-01 23:55:00
   <br>
+  <br>
 
   <h4>More options</h4>
   <li>Week of year: w=7, ww=07</li>
@@ -65,6 +68,8 @@
 
   Or named: short, medium, long, full; shortDate, mediumTime, ...
 
+  <br>
+  <br>
   <h4>Timezone and locale</h4>
 
   {{ Date.parse('2019-05-01T23:55:00') | date:"d MMMM yyyy, HH'h'mm":'-0055':'fr' }} = 1 mai 2019, 21h00
@@ -76,7 +81,7 @@
 
 
 <div app-panel header="Numeric pipes" class="col-sm-6">
-  <h2>CurrencyPipe</h2>
+  <h4>CurrencyPipe</h4>
 
   <!-- value_expression | currency [ : currencyCode [ : display [ : digitsInfo [ : locale ] ] ] ] }} -->
 
@@ -92,25 +97,21 @@
   <li>digitsInfo: [minIntegerDigits=1].[minFractionDigits=2]-[maxFractionDigits=2] (ex: 3.2-2 -> 000.00)</li>
   <li>locale: en-US</li>
 
-  <h4>Full example</h4>
+  <br>
+  <h5>Full example</h5>
   {{ 3.955 | currency:'EUR':'code':'3.2-2':'fr' }} = 003,96 EUR
 
 
   <br>
   <br>
 
-  <a href="https://github.com/angular/angular/issues/25461">Issue: Currency Pipe: Be able to set/change the default currency</a>
-
-
-  <br>
-
-
-  <h2>DecimalPipe</h2>
+  <h4>DecimalPipe</h4>
   <!-- {{ value_expression | number [ : digitsInfo [ : locale ] ] }} -->
   {{ 25.123 | number:'3.4-4'}} = 025,1230
 
-
-  <h2>PercentPipe</h2>
+  <br>
+  <br>
+  <h4>PercentPipe</h4>
   <!-- {{ value_expression | percent [ : digitsInfo [ : locale ] ] }} -->
   {{ 0.259 | percent }} = 26%
 </div>
@@ -119,7 +120,7 @@
 
 
 <div app-panel header="Array pipes" class="col-sm-6">
-  <h2>KeyValuePipe <small>(Impure)</small></h2>
+  <h4>KeyValuePipe <small>(Impure)</small></h4>
 
   Works with Objects and Maps.
 
@@ -128,7 +129,9 @@
   </div>
 
 
-  <h2>SlicePipe <small>(Impure)</small></h2>
+  <br>
+  <br>
+  <h4>SlicePipe <small>(Impure)</small></h4>
 
   <!-- {{ value_expression | slice : start [ : end ] }} -->
 
