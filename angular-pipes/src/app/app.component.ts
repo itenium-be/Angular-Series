@@ -46,4 +46,17 @@ export class AppComponent {
     console.log('DEPRECATED: CurrencyPipe from AppComponent ctor', cp.transform(450.657, 'EUR', 'symbol', '0.2-2', 'fr'));
     console.log('Instead use formatCurrency fn!', formatCurrency(450.657, 'fr', 'EUR', 'symbol', '0.2-2'));
   }
+
+
+  pluralMap = {
+    '=0': 'zero',
+    '=1': 'one',
+    'other': 'multiple (#)',
+  }
+
+  genderMap = {
+    'M': 'Mr',
+    'F': 'Ms',
+    'X': 'Mx',
+  }
 }

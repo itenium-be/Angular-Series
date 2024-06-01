@@ -169,18 +169,25 @@
 
 
 
+<div app-panel header="I18n Pipes" class="col-sm-6">
+  <h4>I18nPluralPipe</h4>
+  <!-- https://angular.dev/api/common/I18nPluralPipe -->
+  <!-- {{ value | i18nPlural: pluralMap [ : locale ] }} -->
+  <!-- pluralMap: https://unicode-org.github.io/icu/userguide/format_parse/messages/ -->
+  <div>0: {{ 0 | i18nPlural: pluralMap }}</div>
+  <div>1: {{ 1 | i18nPlural: pluralMap }}</div>
+  <div>5: {{ 5 | i18nPlural: pluralMap }}</div>
 
 
-
-
-
-<!-- <h1>I18nSelectPipe &amp; I18nPluralPipe</h1> -->
-
-<!-- https://angular.dev/api/common/I18nSelectPipe -->
-<!-- {{ value_expression | i18nSelect : mapping }} -->
-
-<!-- https://angular.dev/api/common/I18nPluralPipe -->
-<!-- {{ value_expression | i18nPlural : pluralMap [ : locale ] }} -->
+  <br>
+  <br>
+  <h4>I18nSelectPipe</h4>
+  <!-- https://angular.dev/api/common/I18nSelectPipe -->
+  <!-- {{ value | i18nSelect : mapping }} -->
+  <div>M: {{ 'M' | i18nSelect: genderMap }}</div>
+  <div>F: {{ 'F' | i18nSelect: genderMap }}</div>
+  <div>X: {{ 'X' | i18nSelect: genderMap }}</div>
+</div>
 
 </div>
 
