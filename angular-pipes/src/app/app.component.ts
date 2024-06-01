@@ -1,5 +1,5 @@
 import { KeyValue, JsonPipe, CurrencyPipe, CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Observable } from 'rxjs';
 import { PanelComponent } from './panel/panel.component';
@@ -37,8 +37,9 @@ export class AppComponent {
     setInterval(() => observer.next(new Date().toString()), 1000);
   });
 
-  jsonOutput: string = '';
-  constructor() {
-
+  jsonOutput: string;
+  constructor(jp: JsonPipe, cp: CurrencyPipe) {
+    this.jsonOutput = jp.transform({key: 0});
+    console.log('CurrencyPipe from AppComponent ctor', cp.transform(450.657, 'EUR', 'symbol', '0.2-2', 'fr'));
   }
 }

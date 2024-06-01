@@ -1,4 +1,4 @@
-import { registerLocaleData } from '@angular/common';
+import { CurrencyPipe, JsonPipe, registerLocaleData } from '@angular/common';
 import { ApplicationConfig, LOCALE_ID } from '@angular/core';
 
 
@@ -11,5 +11,10 @@ registerLocaleData(localeFr, 'fr');
 export const appConfig: ApplicationConfig = {
   providers: [
     {provide: LOCALE_ID, useValue: 'fr'},
+
+    // Provide explicitly because we are injecting
+    // these pipes in the app.component constructor
+    JsonPipe,
+    CurrencyPipe,
   ]
 };
