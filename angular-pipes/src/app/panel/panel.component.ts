@@ -3,7 +3,6 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   selector: '[app-panel]',
-  standalone: true,
   imports: [NgIf],
   template: `
     <div class="card">

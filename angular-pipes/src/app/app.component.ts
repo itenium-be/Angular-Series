@@ -11,7 +11,6 @@ import { UcFirstPipe } from './pipes/ucfirst.pipe';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
   imports: [
     RouterOutlet, PanelComponent, CommonModule,
     BytesPipe, HoursPipe, Nl2brPipe, TrimPipe, UcFirstPipe,
